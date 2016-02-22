@@ -1,10 +1,13 @@
 #include <iostream>
 #include <cstdio>
-#include <cmath>
-#include <GL/glut.h>
-#include "Core/Core.h"
-#include "SOIL/SOIL.h"
 #include <fstream>
+#include <cmath>
+
+#include <GL/glut.h>
+#include "SOIL/SOIL.h"
+
+#include "Core/Core.h"
+
 using namespace std;
 
 Core A(4,4);
@@ -67,7 +70,7 @@ void LoadAllImages()
 	char imgnm[90];
     for(int i=0;i<11;i++)
     {
-        sprintf(imgnm,"/home/prakash/Pictures/Bis/CC%d.png",i+1);
+        sprintf(imgnm,"./res/Files/C%d.png",i+1);
         Textures[i]=LoadPhoto(imgnm);
     }
 }
