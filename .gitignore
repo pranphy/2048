@@ -4,10 +4,10 @@
 ./doxygen/*.*
 ./doxygen/*/*/*.*
 doxygen
-*.cbp
 *.layout
 *.depend
 bin
 */*/*.htm
 */*.htm
-cbx
+cbx/*.layout
+cbx/*.depend
