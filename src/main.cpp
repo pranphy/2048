@@ -144,9 +144,9 @@ void DisplayIt(Core Kernal)
 			int Current=Kernal.Array[i][j];
 			if(Current)
 			{
-				int Power=log(Current)/log(2)-1;
-				//cout<<" to display "<<Power<<" now "<<endl;
-				DrawOne(x,y,Textures[Power]);
+				float  Power = (log(Current)/log(2)) - 1;
+				int Index = static_cast<int>(ceil(Power));
+				DrawOne(x,y,Textures[Index]);
 			}
 			x+=.4;
 		}
@@ -168,10 +168,10 @@ void DrawOne(float PositionX,float PositionY,GLuint Texture)
 	glColor3f(1,1,0);
 
 	glBegin(GL_QUADS);
-        glTexCoord3f(1.0f,0.0f,0.0f);           glVertex3f(factor*IMAGE_BREADTH/2,-factor*IMAGE_LENGTH/2,0);
-        glTexCoord3f(1.0f,1.0f,0.0f);           glVertex3f(factor*IMAGE_BREADTH/2,factor*IMAGE_LENGTH/2,0);
-        glTexCoord3f(0.0f,1.0f,0.0f);           glVertex3f(-factor*IMAGE_BREADTH/2,factor*IMAGE_LENGTH/2,0);
-        glTexCoord3f(0.0f,0.0f,0.0f);           glVertex3f(-factor*IMAGE_BREADTH/2,-factor*IMAGE_LENGTH/2,0);
+        glTexCoord3f(1.0f,0.0f,0.0f); glVertex3f(factor*IMAGE_BREADTH/2,-factor*IMAGE_LENGTH/2,0);
+        glTexCoord3f(1.0f,1.0f,0.0f); glVertex3f(factor*IMAGE_BREADTH/2,factor*IMAGE_LENGTH/2,0);
+        glTexCoord3f(0.0f,1.0f,0.0f); glVertex3f(-factor*IMAGE_BREADTH/2,factor*IMAGE_LENGTH/2,0);
+        glTexCoord3f(0.0f,0.0f,0.0f); glVertex3f(-factor*IMAGE_BREADTH/2,-factor*IMAGE_LENGTH/2,0);
     glEnd();
 }
 
