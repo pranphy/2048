@@ -1,0 +1,13 @@
+*.o
+*/*/*.o
+*/doxygen/*/*.*
+./doxygen/*.*
+./doxygen/*/*/*.*
+doxygen
+*.cbp
+*.layout
+*.depend
+bin
+*/*/*.htm
+*/*.htm
+cbx

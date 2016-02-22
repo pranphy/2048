@@ -63,7 +63,7 @@
              on 'test' only check type, not whether we support this variant
 */
 
-#include "stb_image_aug.h"
+#include "SOIL/stb_image_aug.h"
 
 #ifndef STBI_NO_HDR
 #include <math.h>  // ldexp
