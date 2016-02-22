@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cmath>
 #include <GL/glut.h>
-#include "Core.h"
-#include "src/SOIL.h"
+#include "Core/Core.h"
+#include "SOIL/SOIL.h"
 #include <fstream>
 using namespace std;
 

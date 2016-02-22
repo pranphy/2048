@@ -27,7 +27,7 @@
 	#define APIENTRY
 #else
 	#include <GL/gl.h>
-	#include <GL/glx.h>
+	#include <GL/glut.h>
 #endif
 
 #include "SOIL/SOIL.h"

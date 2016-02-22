@@ -1,28 +1,25 @@
 INCDIR   = include
 SRCDIR   = src
-SRCDIRS  = PML SOIL
+SRCDIRS  = PML SOIL Core
 OBJDIR   = obj
 BINDIR   = bin
 LIBDIR   = lib
 EXEFILE  = 2048
 
 
-
-
-
 #Source Files to looks for
 SOURCES := $(wildcard $(SRCDIRS:%=src/%/*.cpp)) $(wildcard src/*.cpp) 
 
 
-
 INCLUDES  = -Iinclude
 LINKDIR   = -L$(LIBDIR)
+OGLIB     = -lglut32 -lopengl32 -lglu32
 LINKER    =  $(LINKDIR) $(WXLIBS) $(DYNLIB) $(OGLIB) $(GENLIBS)
 
 
 CXX       = g++
 CXXLIBS   =
-LDLIBS    = $(WXLIBS) $(LINKDIR)
+LDLIBS    = $(WXLIBS) $(LINKDIR) $(LINKER)
 
 CXXFLAGS  = -Wall $(INCLUDES) --std=c++11 $(CXXLIBS)
 LDFLAGS   = -std=c++11 $(LDLIBS)
