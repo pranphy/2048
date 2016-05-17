@@ -36,7 +36,7 @@ class Core
 {
 	public:
 		int Points;
-		Matrix Array;
+		Matrix<int> Array;
 		int DownPressed();
 		int ArrowPressed(int);
 		Core(int=4,int=4);

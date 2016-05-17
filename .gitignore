@@ -1,13 +1,10 @@
 *.o
-*/*/*.o
-*/doxygen/*/*.*
-./doxygen/*.*
-./doxygen/*/*/*.*
-doxygen
+doxygen/
 *.layout
 *.depend
 bin
-*/*/*.htm
-*/*.htm
+*.htm
+*.htm
 cbx/*.layout
 cbx/*.depend
+*.swp

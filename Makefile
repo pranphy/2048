@@ -1,6 +1,6 @@
 INCDIR   = include
 SRCDIR   = src
-SRCDIRS  = PML SOIL Core
+SRCDIRS  = Core
 OBJDIR   = obj
 BINDIR   = bin
 LIBDIR   = lib
@@ -11,9 +11,9 @@ EXEFILE  = 2048
 SOURCES := $(wildcard $(SRCDIRS:%=src/%/*.cpp)) $(wildcard src/*.cpp) 
 
 
-INCLUDES  = -Iinclude
+INCLUDES  = -Iinclude -I/home/pranphy/MyRoot/include/
 LINKDIR   = -L$(LIBDIR)
-OGLIB     = -lglut32 -lopengl32 -lglu32
+OGLIB     = -lglut -lGL -lGLU
 LINKER    =  $(LINKDIR) $(WXLIBS) $(DYNLIB) $(OGLIB) $(GENLIBS)
 
 
