@@ -27,9 +27,9 @@
 Core::Core(int Row,int Col)
 {
     initrand();
-    Points=0;
-    Matrix A<int>(Row,Col);
-	Array=A;
+    Points = 0;
+    Matrix<int> A(Row,Col);
+	Array = A;
 	for(int i=0;i<Array.Row;i++)
 		for(int j=0;j<Array.Col;j++)
 			Array[i][j]=0;
@@ -155,27 +155,27 @@ int Core::ArrowPressed(int KeyID)
 	{
 		//cout<<" Left"<<endl;
 
-		Array=Transpose(Array);
-		Array=ReflectX(Array);
+		Array.Transpose();
+		Array.ReflectX();
 		DownPressed();
-		Array=ReflectX(Array);
-		Array=Transpose(Array);
+		Array.ReflectX();
+		Array.Transpose();
 	}
 	else if(KeyID==RIGHT)
 	{
 		//cout<<" Right "<<endl;
-		Array=Transpose(Array);
-		Array=ReflectY(Array);
+		Array.Transpose();
+		Array.ReflectY();
 		DownPressed();
-		Array=ReflectY(Array);
-		Array=Transpose(Array);
+		Array.ReflectY();
+		Array.Transpose();
 	}
 	else if(KeyID==UP)
 	{
 		//cout<<"UP"<<endl;
-		Array=ReflectX(Array);
+		Array.ReflectX();
 		DownPressed();
-		Array=ReflectX(Array);
+		Array.ReflectX();
 	}
 	else
 		return 0;

@@ -8,3 +8,4 @@ bin
 cbx/*.layout
 cbx/*.depend
 *.swp
+__pycache__

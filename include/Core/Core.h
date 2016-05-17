@@ -30,7 +30,6 @@
 #define RIGHT		0x03
 #define UP			0x02
 #define DOWN		0x01
-using namespace std;
 
 class Core
 {
