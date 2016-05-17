@@ -28,7 +28,7 @@ Core::Core(int Row,int Col)
 {
     initrand();
     Points=0;
-    Matrix A(Row,Col);
+    Matrix A<int>(Row,Col);
 	Array=A;
 	for(int i=0;i<Array.Row;i++)
 		for(int j=0;j<Array.Col;j++)

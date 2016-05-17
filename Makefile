@@ -12,7 +12,7 @@ SOURCES := $(wildcard $(SRCDIRS:%=src/%/*.cpp)) $(wildcard src/*.cpp)
 
 
 INCLUDES  = -Iinclude -I/home/pranphy/MyRoot/include/
-LINKDIR   = -L$(LIBDIR)
+LINKDIR   = -L$(LIBDIR) -L/home/pranphy/MyRoot/lib/
 OGLIB     = -lglut -lGL -lGLU
 LINKER    =  $(LINKDIR) $(WXLIBS) $(DYNLIB) $(OGLIB) $(GENLIBS)
 
