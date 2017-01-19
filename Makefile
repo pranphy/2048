@@ -1,27 +1,32 @@
+WXVERSION = 3.0
+WXFLAGS   = `wx-config --version=$(WXVERSION) --cxxflags`
+WXLIBS    = `wx-config --version=$(WXVERSION) --libs all --gl-libs`
+
 INCDIR   = include
 SRCDIR   = src
-SRCDIRS  = Core
+SRCDIRS  = wxGUI Base Utility
 OBJDIR   = obj
 BINDIR   = bin
 LIBDIR   = lib
-EXEFILE  = 2048
+EXEFILE  = wxKitty 
 
 
 #Source Files to looks for
-SOURCES := $(wildcard $(SRCDIRS:%=src/%/*.cpp)) $(wildcard src/*.cpp) 
+SOURCES := $(wildcard $(SRCDIRS:%=src/%/*.cpp)) $(wildcard src/*.cpp)
 
 
-INCLUDES  = -Iinclude -I/home/pranphy/MyRoot/include/
-LINKDIR   = -L$(LIBDIR) -L/home/pranphy/MyRoot/lib/
+
+INCLUDES  = -Iinclude -I/home/pranphy/MyRoot/include
+LINKDIR   = -L$(LIBDIR) -L/home/pranphy/MyRoot/lib
 OGLIB     = -lglut -lGL -lGLU
-LINKER    =  $(LINKDIR) $(WXLIBS) $(DYNLIB) $(OGLIB) $(GENLIBS)
-
+GENLIBS   = -lSOIL
 
 CXX       = g++
 CXXLIBS   =
-LDLIBS    = $(WXLIBS) $(LINKDIR) $(LINKER)
+LDLIBS    = $(LINKDIR) $(WXLIBS) $(DYNLIB) $(OGLIB) $(GENLIBS)
 
-CXXFLAGS  = -Wall $(INCLUDES) --std=c++11 $(CXXLIBS)
+
+CXXFLAGS  = -Wall $(INCLUDES) --std=c++11 $(WXFLAGS) $(CXXLIBS)
 LDFLAGS   = -std=c++11 $(LDLIBS)
 
 
