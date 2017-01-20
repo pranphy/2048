@@ -8,7 +8,7 @@ SRCDIRS  = wxGUI Base Utility
 OBJDIR   = obj
 BINDIR   = bin
 LIBDIR   = lib
-EXEFILE  = wxKitty 
+EXEFILE  = wx2048 
 
 
 #Source Files to looks for

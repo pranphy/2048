@@ -20,7 +20,7 @@
 *	me on twitter on @pranphy.
 
 */
-
+#pragma once
 #include<iostream>
 #include<iomanip>
 #include<cstdlib>

@@ -17,7 +17,7 @@
 
 
 //(*IdInit(MainFrame)
-const long MainFrame::ID_KittyPanel = wxNewId();
+const long MainFrame::ID_GamePanel = wxNewId();
 const long MainFrame::ID_PlayerNameSText = wxNewId();
 const long MainFrame::ID_TEXTCTRL1 = wxNewId();
 const long MainFrame::ID_STATICTEXT1 = wxNewId();
@@ -38,26 +38,26 @@ MainFrame::MainFrame(wxWindow* parent,wxWindowID id)
 
     //(*Initialize(MainFrame)
     wxFlexGridSizer* FlexGridSizer1;
-    wxStaticBoxSizer* KittySBSizer;
+    wxStaticBoxSizer* GameSBSizer;
     wxGridBagSizer* GridBagSizer1;
     wxStaticBoxSizer* StaticBoxSizer1;
 
-    Create(parent, id, _("Welcome Kitty 15.04.0.2"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("id"));
+    Create(parent, id, _("Welcome Game 17.01.0.1"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("id"));
     SetClientSize(wxSize(400,439));
     SetMinSize(wxSize(400,300));
     AuiManager1 = new wxAuiManager(this, wxAUI_MGR_DEFAULT);
-    KittyPanel = new wxPanel(this, ID_KittyPanel, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_KittyPanel"));
+    GamePanel = new wxPanel(this, ID_GamePanel, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_GamePanel"));
     GridBagSizer1 = new wxGridBagSizer(0, 0);
     GridBagSizer1->AddGrowableCol(0);
     GridBagSizer1->AddGrowableCol(1);
     GridBagSizer1->AddGrowableRow(0);
     GridBagSizer1->AddGrowableRow(1);
-    KittySBSizer = new wxStaticBoxSizer(wxHORIZONTAL, KittyPanel, _("Move Cards"));
-    GridBagSizer1->Add(KittySBSizer, wxGBPosition(0, 0), wxDefaultSpan, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    KittyPanel->SetSizer(GridBagSizer1);
-    GridBagSizer1->Fit(KittyPanel);
-    GridBagSizer1->SetSizeHints(KittyPanel);
-    AuiManager1->AddPane(KittyPanel, wxAuiPaneInfo().Name(_T("PaneName")).CenterPane().Caption(_("Kitty Play Area")).CaptionVisible().Row(1));
+    GameSBSizer = new wxStaticBoxSizer(wxHORIZONTAL, GamePanel, _("Move Cards"));
+    GridBagSizer1->Add(GameSBSizer, wxGBPosition(0, 0), wxDefaultSpan, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    GamePanel->SetSizer(GridBagSizer1);
+    GridBagSizer1->Fit(GamePanel);
+    GridBagSizer1->SetSizeHints(GamePanel);
+    AuiManager1->AddPane(GamePanel, wxAuiPaneInfo().Name(_T("PaneName")).CenterPane().Caption(_("Game Play Area")).CaptionVisible().Row(1));
     Panel2 = new wxPanel(this, ID_PANEL2, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL2"));
     Panel2->SetMinSize(wxSize(180,0));
     StaticBoxSizer1 = new wxStaticBoxSizer(wxHORIZONTAL, Panel2, _("Controls"));
@@ -78,7 +78,7 @@ MainFrame::MainFrame(wxWindow* parent,wxWindowID id)
     Panel2->SetSizer(StaticBoxSizer1);
     StaticBoxSizer1->Fit(Panel2);
     StaticBoxSizer1->SetSizeHints(Panel2);
-    AuiManager1->AddPane(Panel2, wxAuiPaneInfo().Name(_T("PaneName")).DefaultPane().Caption(_("Kitty Controls")).CaptionVisible().Position(-2).Left().MinSize(wxSize(180,0)));
+    AuiManager1->AddPane(Panel2, wxAuiPaneInfo().Name(_T("PaneName")).DefaultPane().Caption(_("Game Controls")).CaptionVisible().Position(-2).Left().MinSize(wxSize(180,0)));
     AuiManager1->Update();
     MenuBar1 = new wxMenuBar();
     Menu1 = new wxMenu();
@@ -89,12 +89,10 @@ MainFrame::MainFrame(wxWindow* parent,wxWindowID id)
     //*)
 
 
-    KittyCanvas = new DisplayCanvas(KittyPanel);
+    GameCanvas = new DisplayCanvas(GamePanel);
 
-    KittySBSizer->Add(KittyCanvas,1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL,5);
-     //KittyCanvas->Show();
-    //KittyCanvas->SetCurrent();
-    KittyCanvas->Initialize();
+    GameSBSizer->Add(GameCanvas,1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL,5);
+    GameCanvas->Initialize();
 }
 
 MainFrame::~MainFrame()

@@ -39,11 +39,11 @@ Core::Core(int Row,int Col)
 void Core::Display()
 {
 
-	system("clear");
-	cout<<" Points "<<Points<<endl;
-	cout<<" "<<endl;
+	//system("clear");
+	//cout<<" Points "<<Points<<endl;
+	//cout<<" "<<endl;
 	int Width=8;
-	cout<<setw(Width);
+	//cout<<setw(Width);
 	for(int i=0;i<Array.Row;i++)
 	{
 		for(int j=0;j<Array.Col;j++)
@@ -138,7 +138,7 @@ int Core::DownPressed()
 	}
 	if (!GameSituation)
 	{
-		cout<<" Game over "<<endl; // if no movement has occoured then the game is over
+		//cout<<" Game over "<<endl; // if no movement has occoured then the game is over
 	}
 
 	return 0;

@@ -7,8 +7,8 @@
  * License:
  **************************************************************/
 
-#ifndef KITTYWXMAIN_H
-#define KITTYWXMAIN_H
+#ifndef MAINFRAME_H
+#define MAINFRAME_H
 
 #include "wxGUI/DisplayCanvas.h"
 
@@ -39,7 +39,7 @@ private:
 	//*)
 
 	//(*Identifiers(MainFrame)
-	static const long ID_KittyPanel;
+	static const long ID_GamePanel;
 	static const long ID_PlayerNameSText;
 	static const long ID_TEXTCTRL1;
 	static const long ID_STATICTEXT1;
@@ -54,7 +54,7 @@ private:
 	wxMenuItem* MenuItem1;
 	wxStaticText* PlayerNameSText;
 	wxMenu* Menu1;
-	wxPanel* KittyPanel;
+	wxPanel* GamePanel;
 	wxStaticText* StaticText1;
 	wxPanel* Panel2;
 	wxComboBox* ComboBox1;
@@ -64,9 +64,9 @@ private:
 	wxAuiManager* AuiManager1;
 	wxTextCtrl* TextCtrl2;
 	//*)
-	DisplayCanvas* KittyCanvas;
+	DisplayCanvas* GameCanvas;
 
 	DECLARE_EVENT_TABLE()
 };
 
-#endif // KITTYWXMAIN_H
+#endif // MAINFRAME_H
