@@ -11,11 +11,16 @@ class OGL2048Stage
 {
     private:
         Core A;
-        int Row,Col;
-        GLuint Textures[15];
+        int BlockRow,BlockCol;
+        GLuint* Textures;
+        void InitializeParameters();
         void ChangeSize(int,int);
+
+        float BlockWidth;
+        float BlockHeight;
+        float InterBlockGap;
     public:
-        OGL2048Stage(int=4,int=4);
+        OGL2048Stage(int=5,int=5);
         ~OGL2048Stage();
         void StartDrawing();
         void DrawTriangle();

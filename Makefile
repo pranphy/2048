@@ -26,7 +26,7 @@ CXXLIBS   =
 LDLIBS    = $(LINKDIR) $(WXLIBS) $(DYNLIB) $(OGLIB) $(GENLIBS)
 
 
-CXXFLAGS  = -Wall $(INCLUDES) --std=c++11 $(WXFLAGS) $(CXXLIBS)
+CXXFLAGS  = -Wall -g $(INCLUDES) --std=c++11 $(WXFLAGS) $(CXXLIBS)
 LDFLAGS   = -std=c++11 $(LDLIBS)
 
 

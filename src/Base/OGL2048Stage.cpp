@@ -2,21 +2,39 @@
 #include "SOIL/SOIL.h"
 #include <cmath>
 
-OGL2048Stage::OGL2048Stage(int Rw,int Cl):A(Rw,Cl),Row(Rw),Col(Cl) { cout<<" RC"<<Row<<" "<<Col<<endl;}
-OGL2048Stage::~OGL2048Stage() {}
+OGL2048Stage::OGL2048Stage(int Rw,int Cl):A(Rw,Cl),BlockRow(Rw),BlockCol(Cl) { 
+    InitializeParameters();
+    Textures = new GLuint[BlockRow * BlockCol + 1];
+}
+
+OGL2048Stage::~OGL2048Stage() 
+{
+    delete [] Textures;
+}
+
+void OGL2048Stage::InitializeParameters()
+{
+    BlockWidth = 0.2;
+    BlockHeight = 0.2;
+    InterBlockGap = 0.05;
+}
+
 
 void OGL2048Stage::DisplayBlocks(int width, int height)
 {
     glViewport(0, 0, width, height);
-    float InitialX=-0.7,InitialY=0.7;
-	static float y=InitialY;
-	static float x=InitialX;
+    float InitialX = -(BlockCol/2 * BlockWidth + (BlockCol/2-1)*InterBlockGap); 
+    float InitialY =  (BlockRow/2 * BlockHeight + (BlockRow/2-1)*InterBlockGap);
+	static float y = InitialY;
+	static float x = InitialX;
+    float HorizontalIncrement = BlockWidth + InterBlockGap;
+    float VerticalIncrement = BlockWidth + InterBlockGap;
 	glLoadIdentity();
 	glTranslatef(0,0,-0.5);
 	//glRectf(InitialX,InitialY,x,y);
 	y=InitialY;
 	x=InitialX;
-    Core & Kernal  = A;
+    Core & Kernal = A;
 
 	for(int i=0;i<Kernal.Array.Row;i++)
 	{
@@ -30,9 +48,9 @@ void OGL2048Stage::DisplayBlocks(int width, int height)
 				int Index = static_cast<int>(std::ceil(Power));
 				DrawOne(x,y,Textures[Index]);
 			}
-			x+=.4;
+			x += HorizontalIncrement;
 		}
-		y-=.4;
+		y -= VerticalIncrement;
 	}
     glFlush();
 }
@@ -99,8 +117,8 @@ void OGL2048Stage::DrawOne(float PositionX,float PositionY,GLuint Texture)
     glBindTexture(GL_TEXTURE_2D,Texture);
     glEnable(GL_TEXTURE_2D);
     float factor=1;
-    float IMAGE_LENGTH=.3;
-    float IMAGE_BREADTH=.3;
+    float IMAGE_LENGTH  = BlockHeight;
+    float IMAGE_BREADTH = BlockWidth;
 	//glColor3f(1,1,0); //gives overlay color over the texture
 
 	glBegin(GL_QUADS);
