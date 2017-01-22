@@ -4,7 +4,7 @@
 
 OGL2048Stage::OGL2048Stage(int Rw,int Cl):A(Rw,Cl),BlockRow(Rw),BlockCol(Cl) { 
     InitializeParameters();
-    Textures = new GLuint[BlockRow * BlockCol + 1];
+    Textures = new GLuint[15];
 }
 
 OGL2048Stage::~OGL2048Stage() 
@@ -19,6 +19,10 @@ void OGL2048Stage::InitializeParameters()
     InterBlockGap = 0.05;
 }
 
+void OGL2048Stage::ArrowPressed(int Direction)
+{
+    A.ArrowPressed(Direction);
+}
 
 void OGL2048Stage::DisplayBlocks(int width, int height)
 {
@@ -58,25 +62,22 @@ void OGL2048Stage::DisplayBlocks(int width, int height)
 void OGL2048Stage::LoadAllImages()
 {
 
-    char imgnm[90];
+    std::string ImageName = "./res/Files/C";
     for(int i=0;i<11;i++)
-    {
-        sprintf(imgnm,"./res/Files/C%d.png",i+1);
-        Textures[i]=LoadPhoto(imgnm);
-    }
-
+        Textures[i]=LoadPhoto(ImageName + std::to_string(i+1) + ".png");
 }
 
 
-GLuint OGL2048Stage::LoadPhoto(char* Imagename)
+GLuint OGL2048Stage::LoadPhoto(std::string Imagename) 
 {
     cout<< " Searching for >>  "<<Imagename;
     GLuint tex_2d = SOIL_load_OGL_texture
     (
-        Imagename,
+        Imagename.c_str(),
         SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID,
-        SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+        SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB |
+        SOIL_FLAG_COMPRESS_TO_DXT
     );
 
     if(!tex_2d)
@@ -116,16 +117,15 @@ void OGL2048Stage::DrawOne(float PositionX,float PositionY,GLuint Texture)
     glTranslatef(PositionX,PositionY,-0.3);
     glBindTexture(GL_TEXTURE_2D,Texture);
     glEnable(GL_TEXTURE_2D);
-    float factor=1;
     float IMAGE_LENGTH  = BlockHeight;
     float IMAGE_BREADTH = BlockWidth;
 	//glColor3f(1,1,0); //gives overlay color over the texture
 
 	glBegin(GL_QUADS);
-        glTexCoord3f(1.0f,0.0f,0.0f); glVertex3f(factor*IMAGE_BREADTH/2,-factor*IMAGE_LENGTH/2,0);
-        glTexCoord3f(1.0f,1.0f,0.0f); glVertex3f(factor*IMAGE_BREADTH/2,factor*IMAGE_LENGTH/2,0);
-        glTexCoord3f(0.0f,1.0f,0.0f); glVertex3f(-factor*IMAGE_BREADTH/2,factor*IMAGE_LENGTH/2,0);
-        glTexCoord3f(0.0f,0.0f,0.0f); glVertex3f(-factor*IMAGE_BREADTH/2,-factor*IMAGE_LENGTH/2,0);
+        glTexCoord3f(1.0f,0.0f,0.0f); glVertex3f(IMAGE_BREADTH/2,-IMAGE_LENGTH/2,0);
+        glTexCoord3f(1.0f,1.0f,0.0f); glVertex3f(IMAGE_BREADTH/2,IMAGE_LENGTH/2,0);
+        glTexCoord3f(0.0f,1.0f,0.0f); glVertex3f(-IMAGE_BREADTH/2,IMAGE_LENGTH/2,0);
+        glTexCoord3f(0.0f,0.0f,0.0f); glVertex3f(-IMAGE_BREADTH/2,-IMAGE_LENGTH/2,0);
     glEnd();
 }
 
@@ -149,7 +149,4 @@ void OGL2048Stage::DrawTriangle()
     glColor3ub((GLubyte)255,(GLubyte)255,(GLubyte)255); //reset white color.
     glPopMatrix();
 }
-void OGL2048Stage::ArrowPressed(int Direction)
-{
-    A.ArrowPressed(Direction);
-}
+

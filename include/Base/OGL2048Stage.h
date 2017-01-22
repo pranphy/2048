@@ -3,6 +3,7 @@
 
 #include "Base/Core.h"
 #include <GL/glut.h>
+#include <string>
 
 //Jan 20, 2017, 23:02:09 
 //@pranphy
@@ -15,6 +16,8 @@ class OGL2048Stage
         GLuint* Textures;
         void InitializeParameters();
         void ChangeSize(int,int);
+        void DrawOne(float,float,GLuint);
+        GLuint LoadPhoto(std::string);
 
         float BlockWidth;
         float BlockHeight;
@@ -25,9 +28,7 @@ class OGL2048Stage
         void StartDrawing();
         void DrawTriangle();
         void DisplayBlocks(int,int);
-        void DrawOne(float,float,GLuint);
         void LoadAllImages();
-        GLuint LoadPhoto(char*);
         void ArrowPressed(int);
         void CleanStage();
 };
