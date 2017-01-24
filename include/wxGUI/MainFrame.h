@@ -1,5 +1,5 @@
 /***************************************************************
- * Name:      MainFrame.h
+ * Name:      GameWxMain.h
  * Purpose:   Defines Application Frame
  * Author:    Prakash Gautam (pranphy@gmail.com)
  * Created:   2015-05-03
@@ -7,8 +7,8 @@
  * License:
  **************************************************************/
 
-#ifndef MAINFRAME_H
-#define MAINFRAME_H
+#ifndef KITTYWXMAIN_H
+#define KITTYWXMAIN_H
 
 #include "wxGUI/DisplayCanvas.h"
 
@@ -33,40 +33,33 @@ public:
 
 private:
 
-	//(*Handlers(MainFrame)
 	void OnQuit(wxCommandEvent& event);
 	void OnAbout(wxCommandEvent& event);
-	//*)
 
-	//(*Identifiers(MainFrame)
 	static const long ID_GamePanel;
 	static const long ID_PlayerNameSText;
 	static const long ID_TEXTCTRL1;
-	static const long ID_STATICTEXT1;
-	static const long ID_COMBOBOX1;
-	static const long ID_STATICTEXT2;
-	static const long ID_TEXTCTRL2;
 	static const long ID_PANEL2;
 	static const long ID_AboutHelpSubItem;
-	//*)
 
-	//(*Declarations(MainFrame)
-	wxMenuItem* MenuItem1;
-	wxStaticText* PlayerNameSText;
-	wxMenu* Menu1;
+	wxMenuBar* OnlyMenuBar;
+	wxMenu* HelpMenu;
+	wxMenuItem* AboutMItem;
+
+	wxAuiManager* OnlyAuiManager;
 	wxPanel* GamePanel;
-	wxStaticText* StaticText1;
-	wxPanel* Panel2;
-	wxComboBox* ComboBox1;
-	wxTextCtrl* TextCtrl1;
-	wxMenuBar* MenuBar1;
-	wxStaticText* StaticText2;
-	wxAuiManager* AuiManager1;
-	wxTextCtrl* TextCtrl2;
-	//*)
+	wxPanel* InfoPanel;
+
+	wxStaticText* PlayerNameSText;
+    wxTextCtrl* PlayerNameTCtrl;
+
 	DisplayCanvas* GameCanvas;
+    void CreateGamePanel();
+    void CreateMenuBar();
+    void CreateInfoPanel();
 
 	DECLARE_EVENT_TABLE()
 };
 
-#endif // MAINFRAME_H
+#endif // KITTYWXMAIN_H
+
