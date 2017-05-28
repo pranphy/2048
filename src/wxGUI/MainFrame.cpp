@@ -112,6 +112,8 @@ void  MainFrame::CreateGamePanel()
     GamePanel->SetSizer(GameGBSizer);
     GameGBSizer->Fit(GamePanel);
     GameGBSizer->SetSizeHints(GamePanel);
+    wxGLAttributes dispAttrs;
+    dispAttrs.PlatformDefaults().DoubleBuffer().EndList();
     GameCanvas = new DisplayCanvas(GamePanel);
     GameSBSizer->Add(GameCanvas,1, 
             wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL,5);

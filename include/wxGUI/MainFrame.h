@@ -12,7 +12,6 @@
 
 #include "wxGUI/DisplayCanvas.h"
 
-//(*Headers(MainFrame)
 #include <wx/combobox.h>
 #include <wx/sizer.h>
 #include <wx/menu.h>
@@ -22,7 +21,6 @@
 #include <wx/stattext.h>
 #include <wx/aui/aui.h>
 #include <wx/textctrl.h>
-//*)
 
 class MainFrame: public wxFrame
 {

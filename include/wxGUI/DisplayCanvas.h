@@ -23,7 +23,7 @@ class DisplayCanvas : public wxGLCanvas
     private:
 
         wxGLContext* MyContext;
-
+        wxGLAttributes MyAttributes;
         static const long ID_DisplayCanvas;
 
         OGL2048Stage GameStage;
@@ -31,7 +31,6 @@ class DisplayCanvas : public wxGLCanvas
         void OnKeyPress        (wxKeyEvent&);
         void OnPaint           (wxPaintEvent&);
         void Render            ();
-        GLuint LoadImageFile   (std::string);
 };
 
 #endif // DISPLAYCANVAS_H

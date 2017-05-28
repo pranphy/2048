@@ -9,16 +9,13 @@
 
 #include "wxGUI/wx2048App.h"
 #include "wxGUI/DisplayCanvas.h"
-//(*AppHeaders
 #include "wxGUI/MainFrame.h"
 #include <wx/image.h>
-//*)
 
 IMPLEMENT_APP(wx2048App);
 
 bool wx2048App::OnInit()
 {
-    //(*AppInitialize
     bool wxsOK = true;
     wxInitAllImageHandlers();
     if ( wxsOK )
@@ -28,7 +25,6 @@ bool wx2048App::OnInit()
         Frame->Show();
         SetTopWindow(Frame);
     }
-    //*)
     return wxsOK;
-
 }
+

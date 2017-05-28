@@ -8,4 +8,7 @@ bin
 cbx/*.layout
 cbx/*.depend
 *.swp
+.cproject
+.project
+.settings/
 __pycache__
