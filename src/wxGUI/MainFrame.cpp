@@ -58,12 +58,12 @@ MainFrame::MainFrame(wxWindow* parent,wxWindowID id)
 void MainFrame::CreateInfoPanel()
 {
 
-    wxStaticBoxSizer* StaticBoxSizer1;
+    wxStaticBoxSizer* ControlSBSizer;
     wxFlexGridSizer* FlexGridSizer1;
     InfoPanel = new wxPanel(this, ID_PANEL2, wxDefaultPosition, wxDefaultSize, 
             wxTAB_TRAVERSAL, _T("ID_PANEL2"));
     InfoPanel->SetMinSize(wxSize(180,0));
-    StaticBoxSizer1 = new wxStaticBoxSizer(wxHORIZONTAL, InfoPanel, _("Controls"));
+    ControlSBSizer = new wxStaticBoxSizer(wxHORIZONTAL, InfoPanel, _("Controls"));
 
     PlayerNameSText = new wxStaticText(InfoPanel, ID_PlayerNameSText, _("Player Name"), 
             wxDefaultPosition, wxDefaultSize, 0, _T("ID_PlayerNameSText"));
@@ -76,28 +76,17 @@ void MainFrame::CreateInfoPanel()
 
     FlexGridSizer1->Add(PlayerNameSText, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 5);
     FlexGridSizer1->Add(PlayerNameTCtrl, 1, wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 5);
-    StaticBoxSizer1->Add(FlexGridSizer1, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    InfoPanel->SetSizer(StaticBoxSizer1);
-    StaticBoxSizer1->Fit(InfoPanel);
-    StaticBoxSizer1->SetSizeHints(InfoPanel);
+    ControlSBSizer->Add(FlexGridSizer1, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    InfoPanel->SetSizer(ControlSBSizer);
+    ControlSBSizer->Fit(InfoPanel);
+    ControlSBSizer->SetSizeHints(InfoPanel);
     
-}
-void MainFrame::CreateMenuBar()
-{
-    OnlyMenuBar = new wxMenuBar();
-    HelpMenu = new wxMenu();
-    AboutMItem = new wxMenuItem(HelpMenu, ID_AboutHelpSubItem, _("About\tCtrl+H"), 
-            _("Show fetails of this application"), wxITEM_NORMAL);
-    HelpMenu->Append(AboutMItem);
-    OnlyMenuBar->Append(HelpMenu, _("Help"));
-    SetMenuBar(OnlyMenuBar);
 }
 
 void  MainFrame::CreateGamePanel()
 {
 
-    wxGridBagSizer* GameGBSizer;
-    GameGBSizer = new wxGridBagSizer(0, 0);
+    wxGridBagSizer* GameGBSizer = new wxGridBagSizer(0, 0);
     GameGBSizer->AddGrowableCol(0);
     GameGBSizer->AddGrowableRow(0);
 
@@ -114,11 +103,21 @@ void  MainFrame::CreateGamePanel()
     GameGBSizer->SetSizeHints(GamePanel);
     wxGLAttributes dispAttrs;
     dispAttrs.PlatformDefaults().DoubleBuffer().EndList();
-    GameCanvas = new DisplayCanvas(GamePanel);
+    GameCanvas = new DisplayCanvas(GamePanel,dispAttrs);
     GameSBSizer->Add(GameCanvas,1, 
             wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL,5);
 }
 
+void MainFrame::CreateMenuBar()
+{
+    OnlyMenuBar = new wxMenuBar();
+    HelpMenu = new wxMenu();
+    AboutMItem = new wxMenuItem(HelpMenu, ID_AboutHelpSubItem, _("About\tCtrl+H"), 
+            _("Show fetails of this application"), wxITEM_NORMAL);
+    HelpMenu->Append(AboutMItem);
+    OnlyMenuBar->Append(HelpMenu, _("Help"));
+    SetMenuBar(OnlyMenuBar);
+}
 MainFrame::~MainFrame()
 {
     //(*Destroy(MainFrame)

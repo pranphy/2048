@@ -10,9 +10,10 @@ BEGIN_EVENT_TABLE(DisplayCanvas,wxGLCanvas)
 END_EVENT_TABLE()
 
 
-DisplayCanvas::DisplayCanvas(wxWindow*Parent):
-    wxGLCanvas(Parent),
-    GameStage()
+DisplayCanvas::DisplayCanvas(wxWindow*Parent,wxGLAttributes& dispAttrs):
+     wxGLCanvas(Parent, dispAttrs, ID_DisplayCanvas,  wxDefaultPosition, wxSize(800,800),
+            0, wxT("GLCanvas")),
+     GameStage()
 {
     int argc = 1;
     char* argv[1] = { wxString((wxTheApp->argv)[0]).char_str() };
