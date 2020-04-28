@@ -91,7 +91,7 @@ class Matrix
 
 };
 
-template<typename T>
+template<typename T=unsigned>
 Matrix<T> GetIdentityMatrix(int);
 /*
 
