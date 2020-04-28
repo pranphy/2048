@@ -15,8 +15,8 @@ SOURCES := $(wildcard $(SRCDIRS:%=src/%/*.cpp)) $(wildcard src/*.cpp)
 
 
 
-INCLUDES  = -Iinclude -I/home/pranphy/MyRoot/include
-LINKDIR   = -L$(LIBDIR) -L/home/pranphy/MyRoot/lib
+INCLUDES  = -Iinclude -I/home/pranphy/MyRoot/usr/include
+LINKDIR   = -L$(LIBDIR) -L/home/pranphy/MyRoot/usr/lib
 OGLIB     = -lglut -lGL -lGLU
 GENLIBS   = -lSOIL
 
@@ -25,7 +25,7 @@ CXXLIBS   =
 LDLIBS    = $(LINKDIR) $(WXLIBS) $(DYNLIB) $(OGLIB) $(GENLIBS)
 
 
-CXXFLAGS  = -Wall -g $(INCLUDES) --std=c++11 $(WXFLAGS) $(CXXLIBS)
+CXXFLAGS  = -Wall -g $(INCLUDES) --std=c++11 $(WXFLAGS) $(CXXLIBS) -fPIC
 LDFLAGS   = -std=c++11 $(LDLIBS)
 
 
