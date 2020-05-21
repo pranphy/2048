@@ -1,0 +1,28 @@
+#include "../../include/wxGUI/NewFrame.h"
+
+//(*InternalHeaders(NewFrame)
+#include <wx/intl.h>
+#include <wx/string.h>
+//*)
+
+//(*IdInit(NewFrame)
+//*)
+
+BEGIN_EVENT_TABLE(NewFrame,wxFrame)
+	//(*EventTable(NewFrame)
+	//*)
+END_EVENT_TABLE()
+
+NewFrame::NewFrame(wxWindow* parent,wxWindowID id)
+{
+	//(*Initialize(NewFrame)
+	Create(parent, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("id"));
+	//*)
+}
+
+NewFrame::~NewFrame()
+{
+	//(*Destroy(NewFrame)
+	//*)
+}
+

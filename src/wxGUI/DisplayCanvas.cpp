@@ -79,8 +79,8 @@ void DisplayCanvas::OnKeyPress(wxKeyEvent& event)
         break;
 
     }
-    wxPaintEvent Dummy = wxPaintEvent();
-    OnPaint(Dummy);
+    //wxPaintEvent Dummy = wxPaintEvent();
+    //OnPaint(Dummy);
 }
 
 
